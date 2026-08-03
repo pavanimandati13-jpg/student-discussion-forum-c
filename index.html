@@ -1,25 +1,42 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Discussion Forum</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Student Discussion Forum</title>
+<link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
+<header>
+<h1>🎓 Student Discussion Forum</h1>
+<p>Ask Questions • Share Knowledge • Help Friends</p>
+</header>
+
 <div class="container">
-    <h1>Student Discussion Forum</h1>
 
-    <input type="text" id="name" placeholder="Enter your name">
+<div class="post-box">
+<input type="text" id="name" placeholder="Your Name">
 
-    <textarea id="message" placeholder="Write your discussion..."></textarea>
+<input type="text" id="title" placeholder="Discussion Title">
 
-    <button onclick="addPost()">Post</button>
+<textarea id="message" placeholder="Ask your question here..."></textarea>
 
-    <div id="posts"></div>
+<button onclick="addPost()">Post Question</button>
 </div>
 
+<h2>📚 Recent Discussions</h2>
+
+<div id="posts"></div>
+
+</div>
+
+<footer>
+<p>Cloud Computing Mini Project © 2026</p>
+</footer>
+
 <script src="script.js"></script>
+
 </body>
 </html>
