@@ -5,8 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Student Discussion Forum</title>
   <link rel="stylesheet" href="style.css" />
-  <!-- Supabase CDN for Database & Auth -->
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
   <div class="container">
@@ -15,37 +13,41 @@
       <p>Ask Questions • Share Knowledge • Help Friends</p>
     </header>
 
-    <!-- Auth Section -->
+    <!-- User Login / Register Card -->
     <div id="auth-box" class="card">
       <h3 id="auth-title">Student Login</h3>
-      <input type="email" id="email" placeholder="Enter your email" />
-      <input type="password" id="password" placeholder="Enter your password" />
+      <input type="text" id="user-name-input" placeholder="Enter your full name" />
+      <input type="email" id="email-input" placeholder="Enter your email" />
       <div class="btn-group">
-        <button onclick="handleLogin()" class="btn btn-primary">Login</button>
-        <button onclick="handleSignUp()" class="btn btn-secondary">Sign Up</button>
+        <button onclick="handleLogin()" class="btn btn-primary">Login / Enter Forum</button>
       </div>
     </div>
 
-    <!-- Logged In User Header -->
+    <!-- Active User Header -->
     <div id="user-profile" class="card hidden">
-      <p>Logged in as: <strong id="user-email"></strong></p>
-      <button onclick="handleLogout()" class="btn btn-danger">Logout</button>
+      <p>Logged in as: <strong id="logged-user-name"></strong> (<span id="logged-user-email"></span>)</p>
+      <button onclick="handleLogout()" class="btn btn-danger">Switch User</button>
     </div>
 
-    <!-- Post Question Form -->
+    <!-- Question Posting Form -->
     <div id="post-form" class="card hidden">
-      <h3>Ask a Question</h3>
-      <input type="text" id="post-title" placeholder="Discussion Title (e.g., Node.js, Cloud)" />
-      <textarea id="post-body" placeholder="Ask your question in detail..."></textarea>
+      <h3>Post a New Question</h3>
+      <input type="text" id="post-title" placeholder="Discussion Title (e.g., Node.js, Cloud Computing)" />
+      <textarea id="post-body" placeholder="Write your question or discussion details here..."></textarea>
       <button onclick="createPost()" class="btn btn-primary">Post Question</button>
     </div>
 
     <!-- Search & Feed -->
     <div class="feed-section">
-      <input type="text" id="search-input" placeholder="🔍 Search discussions..." onkeyup="filterPosts()" />
-      <h2>Recent Discussions</h2>
+      <input type="text" id="search-input" placeholder="🔍 Search discussions..." oninput="filterPosts()" />
+      
+      <div class="feed-header">
+        <h2>Recent Discussions</h2>
+        <button onclick="clearAllData()" class="btn-text">Clear Reset Data</button>
+      </div>
+
       <div id="discussions-container">
-        <p class="loading">Loading discussions...</p>
+        <!-- Posts render here dynamically -->
       </div>
     </div>
   </div>
