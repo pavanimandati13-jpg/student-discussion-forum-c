@@ -1,66 +1,95 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    background: #f2f2f2;
-    margin: 0;
-    padding: 20px;
+  background-color: #f4f6f9;
+  color: #333;
+  padding: 20px 10px;
 }
 
 .container {
-    max-width: 600px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
+  max-width: 600px;
+  margin: 0 auto;
 }
 
-h1 {
-    text-align: center;
-    color: #333;
+header {
+  text-align: center;
+  margin-bottom: 20px;
 }
 
-input,
+header h1 {
+  font-size: 1.8rem;
+  color: #1a202c;
+}
+
+header p {
+  color: #718096;
+  font-size: 0.9rem;
+}
+
+.card {
+  background: #ffffff;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  border: 1px solid #e2e8f0;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
 textarea {
-    width: 100%;
-    padding: 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    box-sizing: border-box;
+  height: 100px;
+  resize: vertical;
 }
 
-textarea {
-    height: 100px;
-    resize: vertical;
+.btn {
+  padding: 10px 16px;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
 }
 
-button {
-    width: 100%;
-    padding: 10px;
-    background: #007BFF;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+.btn-primary { background: #2563eb; color: white; width: 100%; }
+.btn-secondary { background: #e2e8f0; color: #1e293b; }
+.btn-danger { background: #ef4444; color: white; }
+
+.btn-group {
+  display: flex;
+  gap: 10px;
 }
 
-button:hover {
-    background: #0056b3;
+.hidden { display: none; }
+
+/* Discussion Items */
+.post-card {
+  background: white;
+  border-left: 4px solid #2563eb;
+  padding: 14px;
+  border-radius: 6px;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }
 
-.post {
-    background: #f9f9f9;
-    border-left: 5px solid #007BFF;
-    padding: 10px;
-    margin-top: 15px;
-    border-radius: 5px;
+.post-card h4 {
+  color: #1e293b;
+  margin-bottom: 6px;
 }
 
-.post h3 {
-    margin: 0;
-}
-
-.post p {
-    margin: 5px 0 0;
+.post-meta {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 10px;
 }
