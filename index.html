@@ -1,42 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Student Discussion Forum</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Discussion Forum</title>
+  <link rel="stylesheet" href="style.css" />
+  <!-- Supabase CDN for Database & Auth -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
-
 <body>
+  <div class="container">
+    <header>
+      <h1>🎓 Student Discussion Forum</h1>
+      <p>Ask Questions • Share Knowledge • Help Friends</p>
+    </header>
 
-<header>
-<h1>🎓 Student Discussion Forum</h1>
-<p>Ask Questions • Share Knowledge • Help Friends</p>
-</header>
+    <!-- Auth Section -->
+    <div id="auth-box" class="card">
+      <h3 id="auth-title">Student Login</h3>
+      <input type="email" id="email" placeholder="Enter your email" />
+      <input type="password" id="password" placeholder="Enter your password" />
+      <div class="btn-group">
+        <button onclick="handleLogin()" class="btn btn-primary">Login</button>
+        <button onclick="handleSignUp()" class="btn btn-secondary">Sign Up</button>
+      </div>
+    </div>
 
-<div class="container">
+    <!-- Logged In User Header -->
+    <div id="user-profile" class="card hidden">
+      <p>Logged in as: <strong id="user-email"></strong></p>
+      <button onclick="handleLogout()" class="btn btn-danger">Logout</button>
+    </div>
 
-<div class="post-box">
-<input type="text" id="name" placeholder="Your Name">
+    <!-- Post Question Form -->
+    <div id="post-form" class="card hidden">
+      <h3>Ask a Question</h3>
+      <input type="text" id="post-title" placeholder="Discussion Title (e.g., Node.js, Cloud)" />
+      <textarea id="post-body" placeholder="Ask your question in detail..."></textarea>
+      <button onclick="createPost()" class="btn btn-primary">Post Question</button>
+    </div>
 
-<input type="text" id="title" placeholder="Discussion Title">
+    <!-- Search & Feed -->
+    <div class="feed-section">
+      <input type="text" id="search-input" placeholder="🔍 Search discussions..." onkeyup="filterPosts()" />
+      <h2>Recent Discussions</h2>
+      <div id="discussions-container">
+        <p class="loading">Loading discussions...</p>
+      </div>
+    </div>
+  </div>
 
-<textarea id="message" placeholder="Ask your question here..."></textarea>
-
-<button onclick="addPost()">Post Question</button>
-</div>
-
-<h2>📚 Recent Discussions</h2>
-
-<div id="posts"></div>
-
-</div>
-
-<footer>
-<p>Cloud Computing Mini Project © 2026</p>
-</footer>
-
-<script src="script.js"></script>
-
+  <script src="script.js"></script>
 </body>
 </html>
