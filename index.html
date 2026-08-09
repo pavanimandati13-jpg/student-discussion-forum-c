@@ -1,57 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Student Discussion Forum</title>
-  <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Discussion Forum</title>
+    <!-- Tailwind CSS for modern layout structure -->
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <!-- Custom styling link -->
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
-  <div class="container">
-    <header>
-      <h1>🎓 Student Discussion Forum</h1>
-      <p>Ask Questions • Share Knowledge • Help Friends</p>
-    </header>
+<body class="bg-slate-50 font-sans min-h-screen text-slate-800">
 
-    <!-- User Login / Register Card -->
-    <div id="auth-box" class="card">
-      <h3 id="auth-title">Student Login</h3>
-      <input type="text" id="user-name-input" placeholder="Enter your full name" />
-      <input type="email" id="email-input" placeholder="Enter your email" />
-      <div class="btn-group">
-        <button onclick="handleLogin()" class="btn btn-primary">Login / Enter Forum</button>
-      </div>
-    </div>
+    <!-- HEADER NAVIGATION -->
+    <nav class="bg-indigo-600 text-white shadow-md sticky top-0 z-50 px-6 py-4 flex justify-between items-center">
+        <h1 class="text-xl font-bold tracking-wide flex items-center gap-2">
+            🎓 <span class="hidden sm:inline">Student Discussion</span> Forum
+        </h1>
+        <div id="nav-user-info" class="hidden flex items-center gap-4">
+            <span id="user-display-email" class="font-medium bg-indigo-700 px-3 py-1.5 rounded-lg text-xs truncate max-w-[160px]"></span>
+            <button id="btn-logout" class="bg-rose-500 hover:bg-rose-600 text-white text-xs font-semibold px-4 py-1.5 rounded-lg transition-all shadow-sm">Logout</button>
+        </div>
+    </nav>
 
-    <!-- Active User Header -->
-    <div id="user-profile" class="card hidden">
-      <p>Logged in as: <strong id="logged-user-name"></strong> (<span id="logged-user-email"></span>)</p>
-      <button onclick="handleLogout()" class="btn btn-danger">Switch User</button>
-    </div>
+    <!-- MAIN INTERFACE CONTAINER -->
+    <main class="max-w-4xl mx-auto p-4 sm:p-6 mt-2">
+        
+        <!-- AUTHENTICATION CARD (LOGIN & REGISTRATION) -->
+        <section id="auth-section" class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-xl border border-slate-100 mt-10">
+            <h2 id="auth-title" class="text-2xl font-black mb-6 text-center text-slate-800 tracking-tight">Login to Forum</h2>
+            
+            <form id="auth-form" class="space-y-5">
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Email Address</label>
+                    <input type="email" id="auth-email" required class="w-full border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm transition-all bg-slate-50">
+                </div>
+                <div>
+                    <label class="block text-xs font-bold uppercase tracking-wider text-slate-500 mb-1.5">Password</label>
+                    <input type="password" id="auth-password" required class="w-full border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm transition-all bg-slate-50">
+                </div>
+                
+                <button type="submit" id="btn-auth-submit" class="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-3 rounded-xl text-sm transition-all shadow-md shadow-indigo-100">Sign In</button>
+            </form>
 
-    <!-- Question Posting Form -->
-    <div id="post-form" class="card hidden">
-      <h3>Post a New Question</h3>
-      <input type="text" id="post-title" placeholder="Discussion Title (e.g., Node.js, Cloud Computing)" />
-      <textarea id="post-body" placeholder="Write your question or discussion details here..."></textarea>
-      <button onclick="createPost()" class="btn btn-primary">Post Question</button>
-    </div>
+            <div class="mt-6 pt-6 border-t border-slate-100 text-center text-xs text-slate-500">
+                <span id="auth-toggle-msg">Don't have an account?</span>
+                <button id="btn-toggle-auth" class="text-indigo-600 font-bold hover:underline ml-1">Register here</button>
+            </div>
+        </section>
 
-    <!-- Search & Feed -->
-    <div class="feed-section">
-      <input type="text" id="search-input" placeholder="🔍 Search discussions..." oninput="filterPosts()" />
-      
-      <div class="feed-header">
-        <h2>Recent Discussions</h2>
-        <button onclick="clearAllData()" class="btn-text">Clear Reset Data</button>
-      </div>
+        <!-- DASHBOARD FEED SECTION -->
+        <section id="forum-section" class="hidden space-y-6">
+            
+            <!-- NEW DISCUSSION COMPOSER BOX -->
+            <div class="bg-white p-5 rounded-2xl shadow-sm border border-slate-100">
+                <h3 class="text-base font-bold mb-4 text-slate-800 flex items-center gap-2">✍️ Start a New Discussion</h3>
+                <form id="post-form" class="space-y-4">
+                    <input type="text" id="post-title" placeholder="Topic Title (e.g., Help with Math Homework)" required class="w-full border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm transition-all bg-slate-50">
+                    <textarea id="post-content" rows="3" placeholder="Describe what you want to discuss or ask..." required class="w-full border border-slate-200 p-3 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 outline-none text-sm transition-all bg-slate-50"></textarea>
+                    <button type="submit" class="bg-emerald-600 hover:bg-emerald-700 text-white text-sm font-semibold px-6 py-2.5 rounded-xl transition-all shadow-sm">Publish Post</button>
+                </form>
+            </div>
 
-      <div id="discussions-container">
-        <!-- Posts render here dynamically -->
-      </div>
-    </div>
-  </div>
+            <!-- FEED HEADLINE -->
+            <div>
+                <h2 class="text-lg font-bold mb-4 text-slate-800 flex items-center gap-2">💬 Active Discussions</h2>
+                <div id="posts-container" class="space-y-4">
+                    <p class="text-slate-400 text-sm italic text-center py-8">Loading active topics...</p>
+                </div>
+            </div>
+            
+        </section>
+    </main>
 
-  <script src="script.js"></script>
+    <!-- Core Link to Firebase Logic Module -->
+    <script type="module" src="script.js"></script>
 </body>
 </html>
