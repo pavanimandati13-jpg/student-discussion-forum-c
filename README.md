@@ -9,9 +9,16 @@ GitHub Repository: https://github.com/pavanimandati13-jpg/student-discussion-for
 
 
 ✨ Key Features
+
 Student-friendly discussion interface
+
 Create and participate in discussions
+
 Share questions, ideas, and information
+
 Clean and responsive user interface
+
 Easy navigation and interaction
+
 Deployed using GitHub Pages
+
