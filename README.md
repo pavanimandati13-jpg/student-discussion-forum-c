@@ -4,7 +4,10 @@ A web-based platform designed to provide students with a space to communicate, s
 
 🔗 Project Links
 Live Demo: https://pavanimandati13-jpg.github.io/student-discussion-forum/
+
 GitHub Repository: https://github.com/pavanimandati13-jpg/student-discussion-forum
+
+
 ✨ Key Features
 Student-friendly discussion interface
 Create and participate in discussions
