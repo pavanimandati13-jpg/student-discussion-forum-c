@@ -6,7 +6,7 @@ A web-based platform that enables students to connect, exchange ideas, ask quest
 
 Explore the deployed application here:
 
-**[View Live Application](https://pavanimandati13-jpg.github.io/student-discussion-forum/)**
+https://pavanimandati13-jpg.github.io/student-discussion-forum-c/
 
 ## 📌 Project Overview
 
